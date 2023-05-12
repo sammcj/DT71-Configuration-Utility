@@ -1,25 +1,29 @@
-import sys, os, time, math
-from PyQt5 import uic, QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton, QFileDialog
-from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QTimer, pyqtSlot
+import sys
+# import os
+# import time
+# import math
+# import pyqtgraph as pg
+from PyQt6.QtWidgets import QApplication, QMainWindow
+#from PyQt6.QtWidgets import QPushButton, QFileDialog, QComboBox, QLineEdit, QLabel
+# from PyQt6.QtGui import QIcon
+# from PyQt6.QtCore import QTimer
 
-import pyqtgraph as pq
+from ui_main import Ui_MainWindow
 
-form_class = uic.loadUiType("main.ui")[0]
 
-class mainWindow(QtWidgets.QMainWindow, form_class):
+class MainWindow(QMainWindow, Ui_MainWindow):
+
     def __init__(self, parent=None):
-        QtWidgets.QMainWindow.__init__(self, parent)
+        super().__init__(parent)
         self.setupUi(self)
 
         self.initUI()
-    
+
     def initUI(self):
         #self.statusBar().showMessage('When you : bottom text')
         self.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex  = mainWindow()
-    sys.exit(app.exec_())
+    ex = MainWindow()
+    sys.exit(app.exec())  # replace exec_() with exec()
